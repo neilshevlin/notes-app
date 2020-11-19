@@ -3,31 +3,46 @@
     <v-text-field
       class='headline mx-12 mt-12'
       placeholder='Title'
-      v-model='title'
+      v-model='input.title'
     ></v-text-field>
+
     <v-textarea
       class='body-1 mx-12'
-      v-model='text'
+      v-model='input.text'
       auto-grow
       placeholder='Your Notes'
       ></v-textarea>
-    <v-btn text >Save Note</v-btn>
+    <v-btn text @click="updateNote(input)">Save Note</v-btn>
 
   </v-app>
 </template>
 
 <script>
-
-
+import {mapGetters} from 'vuex';
+import {mapMutations} from 'vuex';
 export default {
   components: {
 
   },
   data: () => ({
-    title: '',
-    text: '',
-
-  })
+    input: {
+      title: '',
+      text: '',
+    },
+  }),
+  computed: {
+    ...mapGetters([
+      'getTitle',
+      'getText',
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'updateTitle',
+      'updateText',
+      'updateNote',
+    ])
+  }
 }
 </script>
 
