@@ -3,9 +3,10 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.store({
+export const store = new Vuex.Store({
   state: {
-    counter: 0
+    title: 'This is a title',
+    text: 'This is some text',
   },
   mutations: {
 
@@ -14,6 +15,11 @@ export const store = new Vuex.store({
 
   },
   getters: {
-    
-  }
+    getTitle: state => {
+      return state.title;
+    },
+    getText: state => {
+      return state.text;
+    }
+  },
 })
