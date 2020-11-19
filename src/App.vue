@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-divider></v-divider>
+      <v-list class='mt-12'>
+        <v-list-item
+          v-for="i in links"
+          :key="name"
+          link
+          :to='i.direction'
+        >
+          <v-list-item-content >
+            <v-list-item-title>{{ i.name }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-content><router-view /></v-content>
+
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  name: 'App',
+  data: () => ({
+    links: [
+      {name: 'All Notes', direction: '/notesList'},
+      {name: 'Favourites', direction: '/favourites'},
+      {name: 'Deleted', direction: '/deleted'},
+    ],
+  }),
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
