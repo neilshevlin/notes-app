@@ -14,7 +14,7 @@
 
   </v-app>
 </template>
-<!-- This is the feature branch -->
+
 <script>
 import {mapGetters} from 'vuex';
 import {mapMutations} from 'vuex';
