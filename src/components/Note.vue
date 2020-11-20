@@ -25,7 +25,7 @@ export default {
 
   },
   data: () => ({
-    input: {
+    input: {//Object with title and text
       title: '',
       text: '',
     },
@@ -40,7 +40,7 @@ export default {
     ...mapMutations([
       'updateTitle',
       'updateText',
-      'updateNote',
+      'updateNote',//push this.input to store array
     ])
   }
 }

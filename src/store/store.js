@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
   state: {
     title: 'This is a title',
     text: 'This is some text',
-    notesList: [],
+    notesList: [],//input from
   },
   mutations: {
     updateTitle: (state, payload) => {
@@ -17,15 +17,13 @@ export const store = new Vuex.Store({
       state.text = payload;
     },
     updateNote: (state, payload) => {
-      state.title = payload.title;
-      state.text = payload.text;
+      state.notesList.push(payload)//takes an object and pushes object to array
+      //Working properly, wanting an array of objects
     },
-    addNote: (state, payload) => {
-      state.notesList.push(payload);
 
-    },
   },
   actions: {
+
 
   },
   getters: {
@@ -36,7 +34,7 @@ export const store = new Vuex.Store({
       return state.text;
     },
     getNotesList: state => {
-      return state.notesList;
+      return state.notesList; //returns an array of objects
     }
   },
 })
