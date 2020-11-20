@@ -8,7 +8,7 @@
       <v-list class='mt-12'>
         <v-list-item
           v-for="i in links"
-          :key="name"
+          :key="i"
           link
           :to='i.direction'
         >

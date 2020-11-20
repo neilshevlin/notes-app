@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
   state: {
     title: 'This is a title',
     text: 'This is some text',
-    notesList: [],//input from
+    activeNote: 0,
+    notesList: [],//note
   },
   mutations: {
     updateTitle: (state, payload) => {
@@ -20,6 +21,10 @@ export const store = new Vuex.Store({
       state.notesList.push(payload)//takes an object and pushes object to array
       //Working properly, wanting an array of objects
     },
+    setActiveNote: (state, payload) => {
+      state.activeNote = payload;//takes index to set active note
+      
+    }
 
   },
   actions: {
@@ -35,6 +40,9 @@ export const store = new Vuex.Store({
     },
     getNotesList: state => {
       return state.notesList; //returns an array of objects
-    }
+    },
+    getActiveNote: state => {
+      return state.activeNote;
+    },
   },
 })

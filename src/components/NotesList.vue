@@ -3,19 +3,20 @@
     <h1 class='mx-12 mt-12'>Your Notes</h1>
     <v-btn class='mx-12' to='/note' text >New Note + </v-btn>
             <v-card
-            v-for='note in notes'
+            v-for='(note, index) in notes'
             class='my-2 mx-12'
-            :to='note.direction'
+            @click='setActiveNote(index)'
             v-if='notes.length > 0'>
               <v-card-title>{{note.title}}</v-card-title>
               <v-card-subtitle>{{note.text}}</v-card-subtitle>
             </v-card>
             <p v-if='notes.length === 0' class='mx-12 mt-6 body-2'>This list is empty</p>
-
+            
   </v-app>
 </template>
 
 <script>
+
 import {mapGetters} from 'vuex';
 import {mapMutations} from 'vuex';
 import {mapActions} from 'vuex';
@@ -24,10 +25,11 @@ export default {
 
   },
   data: () => ({
-    notes: [],
+    notes: [],//note direction is the issue
     localTitle: 'Changed',
     localText: 'Local Text',
     sampleNum: 7,
+
 
   }),
   mounted: function (){
@@ -40,12 +42,15 @@ export default {
       'getTitle',
       'getText',
       'getNotesList',//get array of objects with each note
+      'getActiveNote',
     ])
   },
   methods: {
     ...mapMutations([
       'updateTitle',
       'updateText',
+      'setActiveNote',// setActive must occur before component is detroyed
+
     ]),
 
   },
