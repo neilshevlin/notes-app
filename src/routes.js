@@ -4,6 +4,18 @@ import Deleted from './components/deleted.vue';
 import Favourites from './components/favourites.vue';
 export const routes = [
   {
+    path: '/',
+    component: NotesList,
+    meta: {
+      metaTags: [
+        {
+          name: 'Notes List',
+          content: 'List of Notes',
+        }
+      ],
+    }
+  },
+  {
     path: '/note',
     component: Note,
     meta: {
