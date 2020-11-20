@@ -1,7 +1,7 @@
 <template lang="html">
   <v-app>
     <h1 class='mx-12 mt-12'>Your Notes</h1>
-    <v-btn class='mx-12' to='/note' text >New Note + </v-btn>
+    <v-btn class='mx-12' @click='setActiveNote(notes.length+1); toNote()' text >New Note + </v-btn>
             <v-card
             v-for='(note, index) in notes'
             class='my-2 mx-12'
@@ -25,7 +25,7 @@ export default {
 
   },
   data: () => ({
-    notes: [],//note direction is the issue
+    notes: [],
     localTitle: 'Changed',
     localText: 'Local Text',
     sampleNum: 7,
@@ -39,7 +39,7 @@ export default {
     ...mapGetters([
       'getTitle',
       'getText',
-      'getNotesList',//get array of objects with each note
+      'getNotesList',
       'getActiveNote',
     ])
   },
@@ -47,7 +47,7 @@ export default {
     ...mapMutations([
       'updateTitle',
       'updateText',
-      'setActiveNote',// setActive must occur before component is detroyed
+      'setActiveNote',
     ]),
     toNote() {
       this.$router.push('note');

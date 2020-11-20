@@ -5,7 +5,7 @@
       placeholder='Title'
       v-model='input.title'
     ></v-text-field>
-    
+
     <v-textarea
       class='body-1 mx-12'
       v-model='input.text'
@@ -27,7 +27,7 @@ export default {
   },
   data: () => ({
     input: {
-      title: '',//title and text should be empty or have the value of the note
+      title: '',
       text: '',
     },
     active: 0,
@@ -43,7 +43,7 @@ export default {
   },
   mounted: function (){
     this.$nextTick(function () {
-      var a = this.getActiveNote; //this works
+      var a = this.getActiveNote;
       this.input.title = this.getNotesList[a].title;
       this.input.text = this.getNotesList[a].text;
     })
@@ -52,7 +52,7 @@ export default {
     ...mapMutations([
       'updateTitle',
       'updateText',
-      'updateNote',//push this.input to store array
+      'updateNote',
     ])
   }
 }
